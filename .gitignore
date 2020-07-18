@@ -1,0 +1,11 @@
+# Ne pas prendre en compte le fichier inventaire de l'utilisateur.
+staging/inventory
+production/inventory
+
+# Ne pas prendre en compte le fichier contenant le mot de passe du vault.
+passwd.txt
+
+# Ne pas prendre en compte les scripts de lancement.
+install_monit.sh
+install_serveur.sh
+install_tronccommun.sh

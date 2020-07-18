@@ -1,0 +1,19 @@
+[all:vars]
+ansible_port=22
+ansible_user=root
+ansible_remote_user=root
+ansible_python_interpreter=/usr/bin/python3
+ansible_sudo=no
+ansible_ssh_pass=Password
+
+[toto]
+x.x.x.x
+
+[toto:vars]
+ansible_ssh_private_key_file=/home/toto/.ssh/ssh_key
+ansible_user=root
+ansible_remote_user=root
+ansible_sudo=no
+# Pour les lignes ci dessous, mettre un seul choix
+architecture_processeur="x86_64", "aarch64"
+type_machine=portable, fixe
