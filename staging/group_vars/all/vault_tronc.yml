@@ -1,0 +1,6 @@
+---
+# Mot de passe du compte admin permettant l'accès à l'interface web de monit
+mdp_admin: Azerty
+
+# Mot de passe du compte utilisateur permettant l'accès à l'interface web de monit
+mdp_utils: Azerty

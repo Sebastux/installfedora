@@ -1,0 +1,14 @@
+---
+- name: Installation du tronc commun en cours.
+  hosts: "{{ cible }}"
+  remote_user: root
+  gather_facts: yes
+  roles:
+    - tronccommun
+
+- name: Installation de monit en cours.
+  hosts: "{{ cible }}"
+  remote_user: root
+  gather_facts: yes
+  roles:
+    - monit

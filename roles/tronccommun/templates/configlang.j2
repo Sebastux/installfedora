@@ -1,0 +1,35 @@
+#!/bin/bash
+# -*- coding: utf-8 -*-
+
+#==============================================================================
+# Titre            : configlang.sh
+# Description      : Script de configuration de Fedora
+# Auteur           : MELONI Sébastien
+# Date             : 29/04/2018
+# Modification     : 14/05/2020
+# Version          : 1.20
+# Utilisation      : ./configlang.sh
+# Notes            : Ce script est destiné à être lancé par ansible pour
+#                    la configuration du clavier et de la langue sur rpi.
+# Version de bash  : 5.0.11
+#==============================================================================
+
+# Configuration de la langue.
+localectl set-locale LANG=fr_FR.UTF-8
+localectl set-keymap fr-oss_latin9
+
+# Configuration de l'horloge
+timedatectl set-local-rtc 0
+timedatectl set-timezone Europe/Paris
+
+# Arrêt des services NTP.
+timedatectl set-ntp false
+systemctl stop chronyd
+
+# Récupération de l'heure courante et mise à l'heure.
+heure=$(date -s "$(curl -s --head http://google.com | grep ^Date: | sed 's/Date: //g')")
+timedatectl set-time $(echo $heure | cut -d' ' -f 5)
+
+# Redémarage des services NTP.
+timedatectl set-ntp true
+systemctl restart chronyd
